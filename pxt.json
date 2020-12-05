@@ -4,7 +4,8 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "color-coded-tilemap": "*"
+        "color-coded-tilemap": "*",
+        "radio": "*"
     },
     "files": [
         "main.blocks",
