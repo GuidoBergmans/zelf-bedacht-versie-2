@@ -7,9 +7,12 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile3, function (sprite, location
 function levelmap () {
     if (level == 0) {
         tiles.setTilemap(tilemap`level_8`)
+        score_voor_bonus = 34
     } else if (level == 1) {
         tiles.setTilemap(tilemap`level_9`)
+        score_voor_bonus = 65 / info.score()
     } else if (level == 2) {
+        score_voor_bonus = 1000000
         tiles.setTilemap(tilemap`level_10`)
     } else if (level == 3) {
         tiles.setTilemap(tilemap`level_11`)
@@ -168,6 +171,10 @@ info.onLifeZero(function () {
     game.over(false)
 })
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile5, function (sprite, location) {
+    if (info.score() >= score_voor_bonus) {
+        info.changeScoreBy(10)
+        autootje.say("je hebt 10 punten voor de bonus gehaald")
+    }
     autootje.setPosition(0, 0)
     autootje.ay = 400
     autootje.vx = 100
@@ -180,6 +187,7 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile32, function (sprite, locatio
     tiles.setTileAt(tiles.getTileLocation(Math.round(autootje.x / 16), 5), myTiles.transparency16)
     scene.cameraShake(4, 500)
 })
+let score_voor_bonus = 0
 let level = 0
 let autootje: Sprite = null
 game.showLongText("Dit is een game waarbij je met spatie balk kan springen en met het pijltje naar rechts kan je harder gaan. Pas op voor het water want als je dat aanraakt dan ben je af. Bij de cactussen en bomen gaat er een leven af. Succes", DialogLayout.Full)
