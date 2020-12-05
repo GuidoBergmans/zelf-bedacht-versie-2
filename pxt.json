@@ -1,5 +1,6 @@
 {
     "name": "zelf bedacht versie 3",
+    "version": "0.0.1",
     "description": "",
     "dependencies": {
         "device": "*",
