@@ -182,6 +182,7 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile32, function (sprite, locatio
 })
 let level = 0
 let autootje: Sprite = null
+game.showLongText("Dit is een game waarbij je met spatie balk kan springen en met het pijltje naar rechts kan je harder gaan. Pas op voor het water want als je dat aanraakt dan ben je af. Bij de cactussen en bomen gaat er een leven af. Succes", DialogLayout.Full)
 effects.confetti.startScreenEffect()
 scene.setBackgroundColor(6)
 autootje = sprites.create(img`
@@ -202,12 +203,12 @@ autootje = sprites.create(img`
     . . . f f f . . . . f f f f . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
-levelmap()
 info.setLife(3)
 autootje.ay = 400
 autootje.vx = 100
 scene.cameraFollowSprite(autootje)
 effects.confetti.endScreenEffect()
+levelmap()
 forever(function () {
     if (autootje.vx < 10) {
         autootje.vx = 100
