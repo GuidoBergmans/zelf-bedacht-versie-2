@@ -41,6 +41,8 @@ function levelmap () {
         tiles.setTilemap(tilemap`level_13`)
     } else if (level == 6) {
         tiles.setTilemap(tilemap`level_14`)
+    } else if (level == 7) {
+        tiles.setTilemap(tilemap`level_15`)
     } else {
         game.over(true)
     }
@@ -86,7 +88,6 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile4, function (sprite, location
     music.baDing.play()
     tiles.setTileAt(location, myTiles.tile9)
     info.changeScoreBy(1)
-    autootje.startEffect(effects.spray, 500)
 })
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile42, function (sprite, location) {
     bonus_levelmap()
