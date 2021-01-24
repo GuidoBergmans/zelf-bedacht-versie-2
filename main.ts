@@ -1,9 +1,6 @@
 namespace SpriteKind {
     export const munt = SpriteKind.create()
 }
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile3, function (sprite, location) {
-    game.over(false)
-})
 function levelmap () {
     if (level == 0) {
         tiles.setTilemap(tilemap`level_8`)
@@ -51,86 +48,32 @@ function levelmap () {
     }
     autootje.say("level " + (level + 1), 5000)
 }
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile22, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile28`, function (sprite, location) {
     info.changeLifeBy(-1)
-    tiles.setTileAt(location, myTiles.tile49)
-    tiles.setTileAt(tiles.getTileLocation(Math.round(autootje.x / 16), 5), myTiles.transparency16)
+    tiles.setTileAt(location, assets.tile`tile51`)
+    tiles.setTileAt(tiles.getTileLocation(Math.round(autootje.x / 16), 5), assets.tile`transparency16`)
     scene.cameraShake(4, 500)
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile41, function (sprite, location) {
-    bonus_levelmap()
-    autootje = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . 7 7 7 7 7 7 7 7 . . . . 
-        . . . 7 4 7 7 7 7 7 7 c 7 . . . 
-        . . 7 c 4 7 7 7 7 7 7 c c 7 . . 
-        . 7 c c 4 4 4 4 4 4 7 c c 4 7 d 
-        . 7 c 7 7 7 7 7 7 7 7 b c 4 7 7 
-        . 7 7 7 b b 7 b b b 7 7 b 4 7 7 
-        . 7 7 b b b 7 b b b b 7 7 7 7 7 
-        . 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        . 7 7 7 7 7 7 7 7 7 7 7 7 7 d d 
-        . 7 7 f f f 7 7 7 7 7 f f f 7 d 
-        . 7 f f f f f 7 7 7 f f f f f 7 
-        . f f f f f f f 7 f f f f f f f 
-        . f f f f f f 7 7 f f f f f f . 
-        . . f f f f . . . . f f f f . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
-    autootje.ay = 400
-    autootje.vx = 100
-    scene.cameraFollowSprite(autootje)
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile28, function (sprite, location) {
-    info.changeLifeBy(-1)
-    tiles.setTileAt(location, myTiles.tile51)
-    tiles.setTileAt(tiles.getTileLocation(Math.round(autootje.x / 16), 5), myTiles.transparency16)
-    scene.cameraShake(4, 500)
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile4, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile4`, function (sprite, location) {
     music.baDing.play()
-    tiles.setTileAt(location, myTiles.tile9)
+    tiles.setTileAt(location, assets.tile`tile9`)
     info.changeScoreBy(1)
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile42, function (sprite, location) {
-    bonus_levelmap()
-    autootje = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . 7 7 7 7 7 7 7 7 . . . . 
-        . . . 7 4 7 7 7 7 7 7 c 7 . . . 
-        . . 7 c 4 7 7 7 7 7 7 c c 7 . . 
-        . 7 c c 4 4 4 4 4 4 7 c c 4 7 d 
-        . 7 c 7 7 7 7 7 7 7 7 b c 4 7 7 
-        . 7 7 7 b b 7 b b b 7 7 b 4 7 7 
-        . 7 7 b b b 7 b b b b 7 7 7 7 7 
-        . 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        . 7 7 7 7 7 7 7 7 7 7 7 7 7 d d 
-        . 7 7 f f f 7 7 7 7 7 f f f 7 d 
-        . 7 f f f f f 7 7 7 f f f f f 7 
-        . f f f f f f f 7 f f f f f f f 
-        . f f f f f f 7 7 f f f f f f . 
-        . . f f f f . . . . f f f f . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
-    autootje.ay = 400
-    autootje.vx = 100
-    scene.cameraFollowSprite(autootje)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (autootje.isHittingTile(CollisionDirection.Bottom)) {
         autootje.vy = -200
     }
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile8, function (sprite, location) {
-    game.over(false)
-})
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     autootje.vx = 0
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile3`, function (sprite, location) {
+    game.over(false)
 })
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
     autootje.vx = 100
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile40, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile42`, function (sprite, location) {
     bonus_levelmap()
     autootje = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -154,23 +97,22 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile40, function (sprite, locatio
     autootje.vx = 100
     scene.cameraFollowSprite(autootje)
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile17, function (sprite, location) {
-    info.changeLifeBy(-1)
-    tiles.setTileAt(location, myTiles.tile50)
-})
 function bonus_levelmap () {
     tiles.setTilemap(tilemap`level_16`)
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile8`, function (sprite, location) {
+    game.over(false)
+})
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     autootje.vx = 150
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile6, function (sprite, location) {
-    game.over(false)
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile32`, function (sprite, location) {
+    info.changeLifeBy(-1)
+    tiles.setTileAt(location, assets.tile`tile51`)
+    tiles.setTileAt(tiles.getTileLocation(Math.round(autootje.x / 16), 5), assets.tile`transparency16`)
+    scene.cameraShake(4, 500)
 })
-info.onLifeZero(function () {
-    game.over(false)
-})
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile5, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile5`, function (sprite, location) {
     if (info.score() >= score_voor_bonus) {
         info.changeScoreBy(10)
         autootje.say("je hebt 10 punten voor de bonus gehaald")
@@ -181,10 +123,68 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile5, function (sprite, location
     level += 1
     levelmap()
 })
-scene.onOverlapTile(SpriteKind.Player, myTiles.tile32, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile40`, function (sprite, location) {
+    bonus_levelmap()
+    autootje = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . 7 7 7 7 7 7 7 7 . . . . 
+        . . . 7 4 7 7 7 7 7 7 c 7 . . . 
+        . . 7 c 4 7 7 7 7 7 7 c c 7 . . 
+        . 7 c c 4 4 4 4 4 4 7 c c 4 7 d 
+        . 7 c 7 7 7 7 7 7 7 7 b c 4 7 7 
+        . 7 7 7 b b 7 b b b 7 7 b 4 7 7 
+        . 7 7 b b b 7 b b b b 7 7 7 7 7 
+        . 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        . 7 7 7 7 7 7 7 7 7 7 7 7 7 d d 
+        . 7 7 f f f 7 7 7 7 7 f f f 7 d 
+        . 7 f f f f f 7 7 7 f f f f f 7 
+        . f f f f f f f 7 f f f f f f f 
+        . f f f f f f 7 7 f f f f f f . 
+        . . f f f f . . . . f f f f . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
+    autootje.ay = 400
+    autootje.vx = 100
+    scene.cameraFollowSprite(autootje)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile17`, function (sprite, location) {
     info.changeLifeBy(-1)
-    tiles.setTileAt(location, myTiles.tile51)
-    tiles.setTileAt(tiles.getTileLocation(Math.round(autootje.x / 16), 5), myTiles.transparency16)
+    tiles.setTileAt(location, assets.tile`tile50`)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile6`, function (sprite, location) {
+    game.over(false)
+})
+info.onLifeZero(function () {
+    game.over(false)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile41`, function (sprite, location) {
+    bonus_levelmap()
+    autootje = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . 7 7 7 7 7 7 7 7 . . . . 
+        . . . 7 4 7 7 7 7 7 7 c 7 . . . 
+        . . 7 c 4 7 7 7 7 7 7 c c 7 . . 
+        . 7 c c 4 4 4 4 4 4 7 c c 4 7 d 
+        . 7 c 7 7 7 7 7 7 7 7 b c 4 7 7 
+        . 7 7 7 b b 7 b b b 7 7 b 4 7 7 
+        . 7 7 b b b 7 b b b b 7 7 7 7 7 
+        . 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        . 7 7 7 7 7 7 7 7 7 7 7 7 7 d d 
+        . 7 7 f f f 7 7 7 7 7 f f f 7 d 
+        . 7 f f f f f 7 7 7 f f f f f 7 
+        . f f f f f f f 7 f f f f f f f 
+        . f f f f f f 7 7 f f f f f f . 
+        . . f f f f . . . . f f f f . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
+    autootje.ay = 400
+    autootje.vx = 100
+    scene.cameraFollowSprite(autootje)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile22`, function (sprite, location) {
+    info.changeLifeBy(-1)
+    tiles.setTileAt(location, assets.tile`tile49`)
+    tiles.setTileAt(tiles.getTileLocation(Math.round(autootje.x / 16), 5), assets.tile`transparency16`)
     scene.cameraShake(4, 500)
 })
 let score_voor_bonus = 0
